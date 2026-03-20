@@ -10,7 +10,8 @@ import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://example.com',
+  site: 'https://gsavitha.in',
+  base: '/',
   integrations: [mdx(), sitemap(), react()],
   markdown: {
     remarkPlugins: [remarkMermaid],
