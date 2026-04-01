@@ -1,13 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import { THEMES, type ThemeName } from '../utils/themes';
+import ErrorBoundary from './ErrorBoundary';
 
 const themes = THEMES;
 
-/**
- * ThemePicker component allows users to choose a primary accent color for the site.
- * It persists the choice in localStorage and applies it via CSS variables.
- */
-export default function ThemePicker() {
+function ThemePickerInner() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeTheme, setActiveTheme] = useState<ThemeName>('blue');
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -88,5 +85,13 @@ export default function ThemePicker() {
         </div>
       )}
     </div>
+  );
+}
+
+export default function ThemePicker() {
+  return (
+    <ErrorBoundary>
+      <ThemePickerInner />
+    </ErrorBoundary>
   );
 }

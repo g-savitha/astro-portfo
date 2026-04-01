@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
+import ErrorBoundary from './ErrorBoundary';
 
 interface Heading {
   depth: number;
@@ -15,7 +16,7 @@ interface Props {
  * TableOfContents component renders a list of headings that highlights the current section
  * as the user scrolls. It supports both desktop and mobile views.
  */
-export default function TableOfContents({ headings, isMobile = false }: Props) {
+function TableOfContentsInner({ headings, isMobile = false }: Props) {
   const [activeId, setActiveId] = useState<string>('');
   const [open, setOpen] = useState(false);
   const headingElementsRef = useRef<{ [key: string]: IntersectionObserverEntry }>({});
@@ -98,6 +99,14 @@ export default function TableOfContents({ headings, isMobile = false }: Props) {
       <h3 className="text-[1.05rem] font-bold text-white mb-4 tracking-tight">Table of Contents</h3>
       {list}
     </nav>
+  );
+}
+
+export default function TableOfContents(props: Props) {
+  return (
+    <ErrorBoundary>
+      <TableOfContentsInner {...props} />
+    </ErrorBoundary>
   );
 }
 

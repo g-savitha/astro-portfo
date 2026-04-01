@@ -20,7 +20,7 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION, image } = Astro.prop
 		<BaseHead title={title} description={description} image={image} />
 	</head>
 	<body class="min-h-screen bg-zinc-900 text-zinc-300 antialiased">
-		<div class="max-w-[1440px] mx-auto flex flex-col lg:flex-row min-h-screen relative">
+		<div class="max-w-[1440px] mx-auto block lg:flex lg:flex-row min-h-screen relative">
 			<Sidebar />
 			<div class="flex-1 min-w-0 flex flex-col">
 				<main class="flex-grow w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-12 pt-6 lg:pt-24 pb-24">
